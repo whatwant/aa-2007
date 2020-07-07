@@ -46,6 +46,11 @@ $ sudo systemctl start mongod
 $ sudo systemctl status mongod
 ```
 
+- service
+```
+$ sudo systemctl enable mongod.service
+```
+
 ### minikube
 
 - reference
@@ -433,4 +438,32 @@ db.business.find().forEach(function(biz){
     "review_count": biz.review_count,
     "categories": biz.categories } });
 });
+```
+
+
+### Node.JS에서 MongoDB 사용하기
+- package-lock.json 생성됨 (node_modules 디렉토리 포함)
+```
+$ cd /srv/workspace/http
+$ npm install mongodb --save
+```
+
+### HTTP Server 실행하기
+- node의 기본 모듈임
+```
+var http = require('http')
+var app = http.createServer(function(request, response){
+  response.writeHead(200, { 'Content-Type': 'text/plain' })
+  response.write('Hello World!!!')
+  response.end()
+})
+app.listen(8080)
+```
+- run
+```
+$ node ./http.js
+```
+- check
+```
+http://localhost:8080
 ```
