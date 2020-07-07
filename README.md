@@ -403,3 +403,34 @@ $ http-server
 
 </html>
 ```
+
+
+### MongoDB import
+```
+$ mongoimport -d yelp -c business --file yelp_academic_dataset_business.json --jsonArray --port 27017
+```
+
+### MongoDB Client & createIntex
+```
+$ mongo
+```
+```
+> use yelp
+> db.business.createIndex( { name: "text", categories: "text" } );
+```
+
+### MongoDB - Compass
+- 원격에서 연결할 때, SSH Tunnel 이용하여 접속하면 가능
+- 이때, DB Host는 localhost로 지정
+
+### MongoDB - create geodata
+```
+db.business.find().forEach(function(biz){
+  db.geodata.insert({ "geometry": { "type": "Point", "coordinates": [ biz.longitude, biz.latitude ] },
+    "properties": { "business_id": biz.business_id,
+    "name": biz.name,
+    "stars": biz.stars,
+    "review_count": biz.review_count,
+    "categories": biz.categories } });
+});
+```
