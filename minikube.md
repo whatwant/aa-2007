@@ -87,3 +87,8 @@ $ docker build -t count:v3 -f dockerfile2 ./
 $ kubectl apply -f server2_deployment.yaml
 ```
 - count pod의 Exec 실행 후 *df -h* 해보면 */dev/sda1* 추가 된걸 볼 수 있다
+
+### 전부 지우기
+```
+$ kubectl delete deploy,pvc,services --all
+```
