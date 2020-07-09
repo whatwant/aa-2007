@@ -92,3 +92,7 @@ $ kubectl apply -f server2_deployment.yaml
 ```
 $ kubectl delete deploy,pvc,services --all
 ```
+
+### host mount
+- 참고
+  - https://suraj.pro/post/hostmount-minikube/
